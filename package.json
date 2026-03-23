@@ -1,6 +1,6 @@
 {
   "name": "@nabasa/vp-wp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "WordPress integration for Vite and Vite+.",
   "keywords": [
     "vite",
