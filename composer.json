@@ -1,0 +1,14 @@
+{
+  "name": "vp-wp/vp-wp",
+  "description": "WordPress runtime helpers for vp-wp manifests.",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": ">=7.4"
+  },
+  "autoload": {
+    "files": [
+      "vp-wp.php"
+    ]
+  }
+}
