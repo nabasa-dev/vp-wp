@@ -54,7 +54,7 @@ jobs:
           vp pack
 
       - name: Publish package
-        run: pnpm publish --access public --no-git-checks
+        run: vp pm publish --access public --no-git-checks
 
       - name: Publish release preview package
         continue-on-error: true
