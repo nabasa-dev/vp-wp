@@ -1,5 +1,13 @@
 # vp-wp
 
+[![build status](https://github.com/nabasa-dev/vp-wp/actions/workflows/ci.yml/badge.svg)](https://github.com/nabasa-dev/vp-wp/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/%40nabasa%2Fvp-wp?logo=npm)](https://www.npmjs.com/package/@nabasa/vp-wp)
+[![npm downloads](https://img.shields.io/npm/dm/%40nabasa%2Fvp-wp?logo=npm)](https://www.npmjs.com/package/@nabasa/vp-wp)
+[![composer version](https://img.shields.io/packagist/v/nabasa/vp-wp?logo=packagist)](https://packagist.org/packages/nabasa/vp-wp)
+[![composer downloads](https://img.shields.io/packagist/dt/nabasa/vp-wp?logo=packagist)](https://packagist.org/packages/nabasa/vp-wp)
+[![pkg.pr.new](https://pkg.pr.new/badge/nabasa-dev/vp-wp)](https://pkg.pr.new/~/nabasa-dev/vp-wp)
+[![license](https://img.shields.io/github/license/nabasa-dev/vp-wp)](https://github.com/nabasa-dev/vp-wp/blob/main/LICENSE)
+
 `vp-wp` is a WordPress integration plugin for Vite with a Vite+ first workflow.
 
 It keeps the old `vite-for-wp` idea, but rewrites the package around a smaller API, TypeScript source, modern Vite defaults, and a cleaner PHP runtime.
@@ -13,7 +21,7 @@ pnpm add -D vite vite-plus @nabasa/vp-wp
 If you want to use the PHP helpers through Composer:
 
 ```sh
-composer require vp-wp/vp-wp
+composer require nabasa/vp-wp
 ```
 
 If you do not use Composer, require `vp-wp.php` manually.
