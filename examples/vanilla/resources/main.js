@@ -5,7 +5,8 @@ import viteIcon from "~icons/vscode-icons/file-type-vite?raw";
 import heroImg from "./assets/hero.png";
 import "./style.css";
 
-const withClass = (svg, className) => svg.replace("<svg ", `<svg class="${className}" aria-hidden="true" `);
+const withClass = (svg, className) =>
+  svg.replace("<svg ", `<svg class="${className}" aria-hidden="true" `);
 
 const docsIcon = withClass(documentationIcon, "icon");
 const githubPanelIcon = withClass(githubIcon, "icon");

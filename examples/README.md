@@ -33,13 +33,13 @@ Then:
 
 ## Example matrix
 
-| Framework | Folder | Plugin file | Top-level menu |
-| --- | --- | --- | --- |
-| React | `examples/react` | `examples/react/vp-wp-react-example.php` | `React` |
-| Vue | `examples/vue` | `examples/vue/vp-wp-vue-example.php` | `Vue` |
-| Svelte | `examples/svelte` | `examples/svelte/vp-wp-svelte-example.php` | `Svelte` |
-| SolidJS | `examples/solidjs` | `examples/solidjs/vp-wp-solidjs-example.php` | `SolidJS` |
-| Vanilla | `examples/vanilla` | `examples/vanilla/vp-wp-vanilla-example.php` | `Vanilla` |
+| Framework | Folder             | Plugin file                                  | Top-level menu |
+| --------- | ------------------ | -------------------------------------------- | -------------- |
+| React     | `examples/react`   | `examples/react/vp-wp-react-example.php`     | `React`        |
+| Vue       | `examples/vue`     | `examples/vue/vp-wp-vue-example.php`         | `Vue`          |
+| Svelte    | `examples/svelte`  | `examples/svelte/vp-wp-svelte-example.php`   | `Svelte`       |
+| SolidJS   | `examples/solidjs` | `examples/solidjs/vp-wp-solidjs-example.php` | `SolidJS`      |
+| Vanilla   | `examples/vanilla` | `examples/vanilla/vp-wp-vanilla-example.php` | `Vanilla`      |
 
 ## Notes
 

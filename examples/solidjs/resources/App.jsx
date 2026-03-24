@@ -22,7 +22,12 @@ export function App() {
             Edit <code>resources/main.jsx</code> and save to test <code>HMR</code>
           </p>
         </div>
-        <button id="counter" type="button" class="counter" onClick={() => setCount((value) => value + 1)}>
+        <button
+          id="counter"
+          type="button"
+          class="counter"
+          onClick={() => setCount((value) => value + 1)}
+        >
           Count is {count()}
         </button>
       </section>

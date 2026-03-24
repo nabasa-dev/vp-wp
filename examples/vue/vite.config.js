@@ -19,9 +19,9 @@ export default defineConfig({
   ],
 
   server: {
-      cors: true,
-      origin: 'http://localhost:3000',
-      port: 3000,
-      // allowedHosts: true, // BrowserStackLocal
+    cors: true,
+    origin: "http://localhost:3000",
+    port: 3000,
+    // allowedHosts: true, // BrowserStackLocal
   },
 });

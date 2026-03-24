@@ -20,7 +20,9 @@ const counter = ref(0);
       <h1>Get started</h1>
       <p>Edit <code>resources/main.js</code> and save to test <code>HMR</code></p>
     </div>
-    <button id="counter" type="button" class="counter" @click="counter += 1">Count is {{ counter }}</button>
+    <button id="counter" type="button" class="counter" @click="counter += 1">
+      Count is {{ counter }}
+    </button>
   </section>
 
   <div class="ticks"></div>
