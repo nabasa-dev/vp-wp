@@ -8,25 +8,29 @@
 [![pkg.pr.new](https://pkg.pr.new/badge/nabasa-dev/vp-wp)](https://pkg.pr.new/~/nabasa-dev/vp-wp)
 [![license](https://img.shields.io/github/license/nabasa-dev/vp-wp)](https://github.com/nabasa-dev/vp-wp/blob/main/LICENSE)
 
-`vp-wp` is a WordPress integration package for Vite+ projects.
+`vp-wp` brings a modern Vite+ workflow to WordPress plugins and themes.
 
-It focuses on a smaller API, TypeScript source, Vite+ tooling, and a cleaner PHP runtime.
+Use it to build and serve frontend assets with WordPress-friendly defaults, a compact TypeScript API, and a lightweight PHP runtime.
 
 ## Install
+
+Install the JavaScript package with Vite+:
 
 ```sh
 vp add -D vite-plus @nabasa/vp-wp
 ```
 
-If you want to use the PHP helpers through Composer:
+If you also want the PHP runtime helpers through Composer:
 
 ```sh
 composer require nabasa/vp-wp
 ```
 
-If you do not use Composer, copy `vp-wp.php` from this repository into your plugin or theme and require it manually.
+If you are not using Composer, copy `vp-wp.php` into your plugin or theme and require it manually.
 
 ## Vite+ config
+
+A minimal Vite+ config looks like this:
 
 ```ts
 import { defineConfig } from "vite-plus";
@@ -45,14 +49,14 @@ export default defineConfig({
 });
 ```
 
-Then use the standard Vite+ commands:
+Then run the usual Vite+ commands:
 
 ```sh
 vp dev
 vp build
 ```
 
-`wordpress()` enables WordPress-friendly defaults:
+`wordpress()` applies WordPress-friendly defaults:
 
 - `base: './'`
 - `build.manifest: 'manifest.json'`
@@ -60,13 +64,13 @@ vp build
 - `css.devSourcemap: true`
 - a development manifest at `vite-dev-server.json`
 
-`wordpressExternals()` externalizes common WordPress globals plus React by default.
+These defaults keep asset URLs, manifests, and CSS handling aligned with WordPress expectations.
 
-## Examples
-
-Reference WordPress plugin examples live in [`examples/README.md`](examples/README.md) for React, Vue, Svelte, SolidJS, and vanilla JavaScript. They show the full plugin shape, Vite config, PHP bootstrap, and frontend entry for each framework.
+`wordpressExternals()` keeps common WordPress globals out of your bundle and treats React as external by default.
 
 ## PHP runtime
+
+A typical enqueue setup looks like this:
 
 ```php
 <?php
@@ -87,14 +91,14 @@ add_action( 'wp_enqueue_scripts', function () use ( $vite ): void {
 } );
 ```
 
-Public PHP helpers:
+Core PHP helper functions:
 
 - `Nabasa\VitePlus\assets()`
 - `Nabasa\VitePlus\register_asset()`
 - `Nabasa\VitePlus\enqueue_asset()`
 - `Nabasa\VitePlus\asset_url()`
 
-Public PHP filters:
+Core PHP filters:
 
 - `nabasa_vite_plus/manifest_data`
 - `nabasa_vite_plus/development_assets`
@@ -103,7 +107,7 @@ Public PHP filters:
 - `nabasa_vite_plus/{scope}/development_assets`
 - `nabasa_vite_plus/{scope}/production_assets`
 
-Use `assets()` when you want to bind a manifest directory once and reuse it:
+Use `assets()` when you want to bind a manifest directory once and reuse it across hooks or callbacks:
 
 ```php
 <?php
@@ -119,7 +123,7 @@ add_action( 'wp_enqueue_scripts', function () use ( $vite ): void {
 } );
 ```
 
-Pass a second argument to `assets()` when you want plugin- or theme-specific hooks:
+Pass a second argument to `assets()` when you want a plugin- or theme-specific hook namespace:
 
 ```php
 <?php
@@ -133,11 +137,11 @@ add_filter( 'nabasa_vite_plus/windpress/production_assets', function ( array $as
 } );
 ```
 
-Scoped helpers fire both the shared `nabasa_vite_plus/*` hooks and the scoped `nabasa_vite_plus/{scope}/*` hooks. The scope is normalized with `sanitize_key()`.
+Scoped helpers still trigger the shared `nabasa_vite_plus/*` hooks as well as the scoped `nabasa_vite_plus/{scope}/*` hooks. The scope is normalized with `sanitize_key()`.
 
-If you prefer the function API, `register_asset()` and `enqueue_asset()` accept the same scope as a fourth argument.
+If you prefer standalone functions, `register_asset()` and `enqueue_asset()` accept the same scope as a fourth argument.
 
-Supported PHP options:
+Supported PHP options include:
 
 - `handle`
 - `dependencies`
@@ -146,9 +150,9 @@ Supported PHP options:
 - `css_only`
 - `in_footer`
 
-During `vp dev`, `vp-wp` reads `vite-dev-server.json` and loads assets from the live dev server. During `vp build`, it reads `manifest.json` and registers the built JavaScript and extracted CSS files.
+During `vp dev`, `vp-wp` reads `vite-dev-server.json` and serves assets from the active dev server. During `vp build`, it reads `manifest.json` and registers the compiled JavaScript and extracted CSS assets.
 
-Use `asset_url()` when you need the public URL for a file inside the built assets directory without going through the manifest:
+Use `asset_url()` when you need the public URL for a file in the built assets directory without looking it up in the manifest:
 
 ```php
 <?php
@@ -160,16 +164,18 @@ $logo_url = asset_url( __DIR__ . '/assets/dist', 'images/logo.svg' );
 
 ## Externals presets
 
+Pick a preset when you want tighter control over which globals stay external:
+
 ```ts
 wordpressExternals({ preset: "wordpress" });
 ```
 
-Available presets:
+Built-in presets:
 
 - `wordpress`
 - `wordpress+react`
 
-You can also extend or trim the map:
+You can also extend or trim the externals map to fit your project:
 
 ```ts
 wordpressExternals({
@@ -192,3 +198,7 @@ vp pack
 ## Credits
 
 `vp-wp` is a fork and rewrite inspired by [`@kucrut/vite-for-wp`](https://github.com/kucrut/vite-for-wp).
+
+## Examples
+
+Need a working reference? See [`examples/README.md`](examples/README.md) for React, Vue, Svelte, SolidJS, and vanilla JavaScript. Each example includes the full plugin structure, Vite config, PHP bootstrap, and frontend entry for its framework.
