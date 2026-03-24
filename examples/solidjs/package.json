@@ -1,0 +1,17 @@
+{
+  "name": "vp-wp-example-solidjs",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@nabasa/vp-wp": "^0.3.0",
+    "solid-js": "^1.9.11",
+    "vite-plus": "^0.1.13"
+  },
+  "devDependencies": {
+    "@iconify-json/lucide": "^1.2.98",
+    "@iconify-json/vscode-icons": "^1.2.45",
+    "unplugin-icons": "^23.0.1",
+    "vite-plugin-solid": "^2.11.11"
+  },
+  "packageManager": "pnpm@10.30.3"
+}

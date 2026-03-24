@@ -1,3 +1,10 @@
 .DS_Store
 dist
 node_modules
+examples/*/assets/dist
+examples/*/composer.lock
+examples/*/node_modules
+examples/*/pnpm-lock.yaml
+examples/*/vendor
+
+opencode.json

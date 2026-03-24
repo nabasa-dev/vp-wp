@@ -62,6 +62,10 @@ vp build
 
 `wordpressExternals()` externalizes common WordPress globals plus React by default.
 
+## Examples
+
+Reference WordPress plugin examples live in [`examples/README.md`](examples/README.md) for React, Vue, Svelte, SolidJS, and vanilla JavaScript. They show the full plugin shape, Vite config, PHP bootstrap, and frontend entry for each framework.
+
 ## PHP runtime
 
 ```php
@@ -72,14 +76,14 @@ use function Nabasa\VitePlus\assets;
 $vite = assets( __DIR__ . '/assets/dist' );
 
 add_action( 'wp_enqueue_scripts', function () use ( $vite ): void {
-	$vite->enqueue(
-		'resources/app.ts',
-		[
-			'handle' => 'my-plugin-app',
-			'dependencies' => [ 'react', 'react-dom' ],
-			'in_footer' => true,
-		]
-	);
+    $vite->enqueue(
+        'resources/app.ts',
+        [
+            'handle' => 'my-plugin-app',
+            'dependencies' => [ 'react', 'react-dom' ],
+            'in_footer' => true,
+        ]
+    );
 } );
 ```
 
@@ -109,9 +113,9 @@ use function Nabasa\VitePlus\assets;
 $vite = assets( __DIR__ . '/assets/dist' );
 
 add_action( 'wp_enqueue_scripts', function () use ( $vite ): void {
-	$vite->enqueue( 'resources/app.ts', [
-		'handle' => 'theme-app',
-	] );
+    $vite->enqueue( 'resources/app.ts', [
+        'handle' => 'theme-app',
+    ] );
 } );
 ```
 
@@ -125,7 +129,7 @@ use function Nabasa\VitePlus\assets;
 $vite = assets( __DIR__ . '/assets/dist', 'windpress' );
 
 add_filter( 'nabasa_vite_plus/windpress/production_assets', function ( array $assets ) {
-	return $assets;
+    return $assets;
 } );
 ```
 

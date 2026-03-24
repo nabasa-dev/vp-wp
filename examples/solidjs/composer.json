@@ -1,0 +1,10 @@
+{
+  "name": "nabasa/vp-wp-example-solidjs",
+  "description": "SolidJS WordPress plugin example for nabasa/vp-wp.",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": ">=7.4",
+    "nabasa/vp-wp": "^0.3"
+  }
+}
