@@ -24,7 +24,7 @@ If you want to use the PHP helpers through Composer:
 composer require nabasa/vp-wp
 ```
 
-If you do not use Composer, require `vp-wp.php` manually.
+If you do not use Composer, copy `vp-wp.php` from this repository into your plugin or theme and require it manually.
 
 ## Vite+ config
 
