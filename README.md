@@ -28,6 +28,10 @@ composer require nabasa/vp-wp
 
 If you are not using Composer, copy `vp-wp.php` into your plugin or theme and require it manually.
 
+## Migration
+
+Moving from `@kucrut/vite-for-wp`? See [`docs/migrating-from-vite-for-wp.md`](docs/migrating-from-vite-for-wp.md).
+
 ## Vite+ config
 
 A minimal Vite+ config looks like this:
