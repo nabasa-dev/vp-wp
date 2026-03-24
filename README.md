@@ -8,14 +8,14 @@
 [![pkg.pr.new](https://pkg.pr.new/badge/nabasa-dev/vp-wp)](https://pkg.pr.new/~/nabasa-dev/vp-wp)
 [![license](https://img.shields.io/github/license/nabasa-dev/vp-wp)](https://github.com/nabasa-dev/vp-wp/blob/main/LICENSE)
 
-`vp-wp` is a WordPress integration plugin for Vite with a Vite+ first workflow.
+`vp-wp` is a WordPress integration package for Vite+ projects.
 
-It keeps the old `vite-for-wp` idea, but rewrites the package around a smaller API, TypeScript source, modern Vite defaults, and a cleaner PHP runtime.
+It focuses on a smaller API, TypeScript source, Vite+ tooling, and a cleaner PHP runtime.
 
 ## Install
 
 ```sh
-pnpm add -D vite vite-plus @nabasa/vp-wp
+vp add -D vite-plus @nabasa/vp-wp
 ```
 
 If you want to use the PHP helpers through Composer:
@@ -62,14 +62,12 @@ vp build
 
 `wordpressExternals()` externalizes common WordPress globals plus React by default.
 
-If you are not using Vite+, you can use the same plugin with `defineConfig` from `vite`.
-
 ## PHP runtime
 
 ```php
 <?php
 
-use function Nabasa\Vite\assets;
+use function Nabasa\VitePlus\assets;
 
 $vite = assets( __DIR__ . '/assets/dist' );
 
@@ -87,26 +85,26 @@ add_action( 'wp_enqueue_scripts', function () use ( $vite ): void {
 
 Public PHP helpers:
 
-- `Nabasa\Vite\assets()`
-- `Nabasa\Vite\register_asset()`
-- `Nabasa\Vite\enqueue_asset()`
-- `Nabasa\Vite\asset_url()`
+- `Nabasa\VitePlus\assets()`
+- `Nabasa\VitePlus\register_asset()`
+- `Nabasa\VitePlus\enqueue_asset()`
+- `Nabasa\VitePlus\asset_url()`
 
 Public PHP filters:
 
-- `nabasa_vite/manifest_data`
-- `nabasa_vite/development_assets`
-- `nabasa_vite/production_assets`
-- `nabasa_vite/{scope}/manifest_data`
-- `nabasa_vite/{scope}/development_assets`
-- `nabasa_vite/{scope}/production_assets`
+- `nabasa_vite_plus/manifest_data`
+- `nabasa_vite_plus/development_assets`
+- `nabasa_vite_plus/production_assets`
+- `nabasa_vite_plus/{scope}/manifest_data`
+- `nabasa_vite_plus/{scope}/development_assets`
+- `nabasa_vite_plus/{scope}/production_assets`
 
 Use `assets()` when you want to bind a manifest directory once and reuse it:
 
 ```php
 <?php
 
-use function Nabasa\Vite\assets;
+use function Nabasa\VitePlus\assets;
 
 $vite = assets( __DIR__ . '/assets/dist' );
 
@@ -122,16 +120,16 @@ Pass a second argument to `assets()` when you want plugin- or theme-specific hoo
 ```php
 <?php
 
-use function Nabasa\Vite\assets;
+use function Nabasa\VitePlus\assets;
 
 $vite = assets( __DIR__ . '/assets/dist', 'windpress' );
 
-add_filter( 'nabasa_vite/windpress/production_assets', function ( array $assets ) {
+add_filter( 'nabasa_vite_plus/windpress/production_assets', function ( array $assets ) {
 	return $assets;
 } );
 ```
 
-Scoped helpers fire both the shared `nabasa_vite/*` hooks and the scoped `nabasa_vite/{scope}/*` hooks. The scope is normalized with `sanitize_key()`.
+Scoped helpers fire both the shared `nabasa_vite_plus/*` hooks and the scoped `nabasa_vite_plus/{scope}/*` hooks. The scope is normalized with `sanitize_key()`.
 
 If you prefer the function API, `register_asset()` and `enqueue_asset()` accept the same scope as a fourth argument.
 
@@ -151,7 +149,7 @@ Use `asset_url()` when you need the public URL for a file inside the built asset
 ```php
 <?php
 
-use function Nabasa\Vite\asset_url;
+use function Nabasa\VitePlus\asset_url;
 
 $logo_url = asset_url( __DIR__ . '/assets/dist', 'images/logo.svg' );
 ```
@@ -178,15 +176,6 @@ wordpressExternals({
 });
 ```
 
-## Breaking changes from `vite-for-wp`
-
-- `v4wp()` becomes `wordpress()`
-- `wp_scripts()` becomes `wordpressExternals()`
-- `create_config()` is removed
-- JS utility exports are removed
-- PHP namespace changes from `Kucrut\Vite` to `Nabasa\Vite`
-- PHP option keys use snake case, such as `css_dependencies` and `in_footer`
-
 ## Development
 
 ```sh
@@ -198,4 +187,4 @@ vp pack
 
 ## Credits
 
-`vp-wp` is a rewrite inspired by [`@kucrut/vite-for-wp`](https://github.com/kucrut/vite-for-wp).
+`vp-wp` is a fork and rewrite inspired by [`@kucrut/vite-for-wp`](https://github.com/kucrut/vite-for-wp).

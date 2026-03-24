@@ -2,7 +2,7 @@
 
 declare( strict_types=1 );
 
-namespace Nabasa\Vite;
+namespace Nabasa\VitePlus;
 
 use Exception;
 use WP_HTML_Tag_Processor;
@@ -479,13 +479,13 @@ function prepare_asset_url( string $dir ): string {
  * @return mixed Filtered value.
  */
 function filter_value( string $hook, $value, string $scope = '', ...$args ) {
-	$value = apply_filters( "nabasa_vite/{$hook}", $value, ...$args );
+	$value = apply_filters( "nabasa_vite_plus/{$hook}", $value, ...$args );
 
 	if ( '' === $scope ) {
 		return $value;
 	}
 
-	return apply_filters( "nabasa_vite/{$scope}/{$hook}", $value, ...$args );
+	return apply_filters( "nabasa_vite_plus/{$scope}/{$hook}", $value, ...$args );
 }
 
 /**

@@ -1,7 +1,7 @@
 {
   "name": "@nabasa/vp-wp",
-  "version": "0.1.2",
-  "description": "WordPress integration for Vite and Vite+.",
+  "version": "0.2.0",
+  "description": "WordPress integration for Vite+.",
   "keywords": [
     "vite",
     "vite-plus",
@@ -56,11 +56,10 @@
   "devDependencies": {
     "@types/node": "^24.10.1",
     "typescript": "^5.9.3",
-    "vite": "^8.0.0",
     "vite-plus": "^0.1.13"
   },
   "peerDependencies": {
-    "vite": "^8.0.0"
+    "vite-plus": "^0.1.13"
   },
   "packageManager": "pnpm@10.30.3"
 }

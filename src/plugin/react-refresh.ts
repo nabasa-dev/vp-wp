@@ -1,4 +1,4 @@
-import type { Plugin } from "vite";
+import type { Plugin } from "vite-plus";
 
 import type { InjectReactRefreshOption } from "../shared/types";
 

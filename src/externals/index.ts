@@ -1,4 +1,4 @@
-import type { Plugin, PluginOption } from "vite";
+import type { Plugin, PluginOption } from "vite-plus";
 
 import type { WordPressExternalsOptions, WordPressGlobalsMap } from "../shared/types";
 import { getWordPressGlobals } from "./wp-globals";

@@ -1,7 +1,7 @@
 import { mkdir, rm, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 
-import type { Plugin, ResolvedConfig, ViteDevServer } from "vite";
+import type { Plugin, ResolvedConfig, ViteDevServer } from "vite-plus";
 
 import type { DevManifestData, ResolvedWordPressPluginOptions } from "../shared/types";
 import { DEFAULT_DEV_MANIFEST_FILE, DEFAULT_OUT_DIR } from "./config-defaults";

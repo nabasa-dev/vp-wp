@@ -1,6 +1,6 @@
 {
   "name": "nabasa/vp-wp",
-  "description": "WordPress integration for Vite and Vite+.",
+  "description": "WordPress integration for Vite+.",
   "type": "library",
   "license": "MIT",
   "homepage": "https://github.com/nabasa-dev/vp-wp",

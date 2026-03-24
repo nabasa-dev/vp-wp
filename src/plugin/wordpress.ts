@@ -1,4 +1,4 @@
-import type { Plugin, PluginOption, UserConfig } from "vite";
+import type { Plugin, PluginOption, UserConfig } from "vite-plus";
 
 import type { ResolvedWordPressPluginOptions, WordPressPluginOptions } from "../shared/types";
 import { DEFAULT_ENTRY, DEFAULT_OUT_DIR, resolveWordPressOptions } from "./config-defaults";
