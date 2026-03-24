@@ -69,7 +69,7 @@ add_action( 'wp_enqueue_scripts', function () use ( $vite ): void {
 	$vite->enqueue(
 		'resources/app.ts',
 		[
-			'handle' => 'theme-app',
+			'handle' => 'my-plugin-app',
 			'dependencies' => [ 'react', 'react-dom' ],
 			'in_footer' => true,
 		]
@@ -179,10 +179,6 @@ wordpressExternals({
 - PHP namespace changes from `Kucrut\Vite` to `Nabasa\Vite`
 - PHP option keys use snake case, such as `css_dependencies` and `in_footer`
 
-## Credits
-
-`vp-wp` is a rewrite inspired by [`@kucrut/vite-for-wp`](https://github.com/kucrut/vite-for-wp) by Dzikri Aziz.
-
 ## Development
 
 ```sh
@@ -192,15 +188,6 @@ vp test
 vp pack
 ```
 
-### CI/CD
+## Credits
 
-GitHub Actions workflows live in `.github/workflows/`:
-
-- `ci.yml` runs Composer validation, PHP lint, `vp check`, `vp test run`, `vp pack`, and pkg.pr.new preview publishes for pushes and pull requests
-- `release.yml` publishes to npm and pkg.pr.new when you push a semver tag that matches `package.json`
-
-The JavaScript jobs use `voidzero-dev/setup-vp` as recommended by the Vite+ CI guide.
-
-The preview publish uses `vp dlx pkg-pr-new publish --packageManager=pnpm`. Before it can post preview URLs, install the pkg.pr.new GitHub App on the repository. The release workflow runs the same preview publish after npm publish so official tags also get preview artifacts.
-
-For npm publishing, configure this repository as an npm trusted publisher. For Composer distribution, point Packagist at the GitHub repository so tags are picked up automatically.
+`vp-wp` is a rewrite inspired by [`@kucrut/vite-for-wp`](https://github.com/kucrut/vite-for-wp).
