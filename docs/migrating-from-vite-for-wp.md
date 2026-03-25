@@ -13,20 +13,20 @@ You do not need to rename your source folders. If your project already uses path
 
 ## Quick mapping
 
-| `vite-for-wp` | `vp-wp` | Notes |
-| --- | --- | --- |
-| `@kucrut/vite-for-wp` | `@nabasa/vp-wp` | JavaScript package |
-| `kucrut/vite-for-wp` | `nabasa/vp-wp` | Composer package |
-| `v4wp()` | `wordpress()` | Vite+ plugin |
-| `input` | `entry` | JavaScript plugin option |
-| `wp_scripts()` | `wordpressExternals()` | Externals helper |
-| `wp_scripts({ extraScripts })` | `wordpressExternals({ include })` | Add custom globals |
-| `Kucrut\Vite` | `Nabasa\VitePlus` | PHP namespace |
-| `css-dependencies` | `css_dependencies` | PHP option key |
-| `css-media` | `css_media` | PHP option key |
-| `css-only` | `css_only` | PHP option key |
-| `in-footer` | `in_footer` | PHP option key |
-| `vite_for_wp__*` | `nabasa_vite_plus/*` | Runtime filters |
+| `vite-for-wp`                  | `vp-wp`                           | Notes                    |
+| ------------------------------ | --------------------------------- | ------------------------ |
+| `@kucrut/vite-for-wp`          | `@nabasa/vp-wp`                   | JavaScript package       |
+| `kucrut/vite-for-wp`           | `nabasa/vp-wp`                    | Composer package         |
+| `v4wp()`                       | `wordpress()`                     | Vite+ plugin             |
+| `input`                        | `entry`                           | JavaScript plugin option |
+| `wp_scripts()`                 | `wordpressExternals()`            | Externals helper         |
+| `wp_scripts({ extraScripts })` | `wordpressExternals({ include })` | Add custom globals       |
+| `Kucrut\Vite`                  | `Nabasa\VitePlus`                 | PHP namespace            |
+| `css-dependencies`             | `css_dependencies`                | PHP option key           |
+| `css-media`                    | `css_media`                       | PHP option key           |
+| `css-only`                     | `css_only`                        | PHP option key           |
+| `in-footer`                    | `in_footer`                       | PHP option key           |
+| `vite_for_wp__*`               | `nabasa_vite_plus/*`              | Runtime filters          |
 
 ## 1. Replace dependencies
 
@@ -173,21 +173,21 @@ add_action( 'wp_enqueue_scripts', function (): void {
 
 If you were calling lower-level PHP helpers directly, use this mapping:
 
-| `vite-for-wp` | `vp-wp` | Notes |
-| --- | --- | --- |
-| `Kucrut\Vite\get_manifest()` | `Nabasa\VitePlus\get_manifest()` | Same role; adds `$scope` and passes `$is_dev` to filters |
-| `Kucrut\Vite\filter_script_tag()` | `Nabasa\VitePlus\filter_script_tag()` | Same role; duplicate handle filters are skipped |
-| `Kucrut\Vite\set_script_type_attribute()` | `Nabasa\VitePlus\set_script_type_attribute()` | Same role |
-| `Kucrut\Vite\generate_development_asset_src()` | `Nabasa\VitePlus\development_asset_src()` | Renamed; same role |
-| `Kucrut\Vite\register_vite_client_script()` | `Nabasa\VitePlus\register_vite_client_script()` | Same role |
-| `Kucrut\Vite\inject_react_refresh_preamble_script()` | `Nabasa\VitePlus\inject_react_refresh_preamble()` | Renamed; also supports `reactRefresh` |
-| `Kucrut\Vite\load_development_asset()` | `Nabasa\VitePlus\load_development_asset()` | Same role; adds `$scope` and deduplicates dependencies |
-| `Kucrut\Vite\load_production_asset()` | `Nabasa\VitePlus\load_production_asset()` | Same role; adds `$scope` and scoped filters |
-| `Kucrut\Vite\register_stylesheets()` | `Nabasa\VitePlus\register_stylesheets()` | Same role; style handles are hashed and deduplicated |
-| `Kucrut\Vite\parse_options()` | `Nabasa\VitePlus\parse_options()` | Same role; defaults use snake_case keys |
-| `Kucrut\Vite\prepare_asset_url()` | `Nabasa\VitePlus\prepare_asset_url()` | Same role |
-| `Kucrut\Vite\register_asset()` | `Nabasa\VitePlus\register_asset()` | Same role; adds `$scope` and default handle generation |
-| `Kucrut\Vite\enqueue_asset()` | `Nabasa\VitePlus\enqueue_asset()` | Same role; adds `$scope` and default handle generation |
+| `vite-for-wp`                                        | `vp-wp`                                           | Notes                                                    |
+| ---------------------------------------------------- | ------------------------------------------------- | -------------------------------------------------------- |
+| `Kucrut\Vite\get_manifest()`                         | `Nabasa\VitePlus\get_manifest()`                  | Same role; adds `$scope` and passes `$is_dev` to filters |
+| `Kucrut\Vite\filter_script_tag()`                    | `Nabasa\VitePlus\filter_script_tag()`             | Same role; duplicate handle filters are skipped          |
+| `Kucrut\Vite\set_script_type_attribute()`            | `Nabasa\VitePlus\set_script_type_attribute()`     | Same role                                                |
+| `Kucrut\Vite\generate_development_asset_src()`       | `Nabasa\VitePlus\development_asset_src()`         | Renamed; same role                                       |
+| `Kucrut\Vite\register_vite_client_script()`          | `Nabasa\VitePlus\register_vite_client_script()`   | Same role                                                |
+| `Kucrut\Vite\inject_react_refresh_preamble_script()` | `Nabasa\VitePlus\inject_react_refresh_preamble()` | Renamed; also supports `reactRefresh`                    |
+| `Kucrut\Vite\load_development_asset()`               | `Nabasa\VitePlus\load_development_asset()`        | Same role; adds `$scope` and deduplicates dependencies   |
+| `Kucrut\Vite\load_production_asset()`                | `Nabasa\VitePlus\load_production_asset()`         | Same role; adds `$scope` and scoped filters              |
+| `Kucrut\Vite\register_stylesheets()`                 | `Nabasa\VitePlus\register_stylesheets()`          | Same role; style handles are hashed and deduplicated     |
+| `Kucrut\Vite\parse_options()`                        | `Nabasa\VitePlus\parse_options()`                 | Same role; defaults use snake_case keys                  |
+| `Kucrut\Vite\prepare_asset_url()`                    | `Nabasa\VitePlus\prepare_asset_url()`             | Same role                                                |
+| `Kucrut\Vite\register_asset()`                       | `Nabasa\VitePlus\register_asset()`                | Same role; adds `$scope` and default handle generation   |
+| `Kucrut\Vite\enqueue_asset()`                        | `Nabasa\VitePlus\enqueue_asset()`                 | Same role; adds `$scope` and default handle generation   |
 
 New in `vp-wp`:
 
@@ -225,11 +225,11 @@ The optional second argument is a scope. Scoped helpers still run the shared hoo
 
 If you hooked into `vite-for-wp` filters, rename them like this:
 
-| `vite-for-wp` | `vp-wp` |
-| --- | --- |
-| `vite_for_wp__manifest_data` | `nabasa_vite_plus/manifest_data` |
+| `vite-for-wp`                     | `vp-wp`                               |
+| --------------------------------- | ------------------------------------- |
+| `vite_for_wp__manifest_data`      | `nabasa_vite_plus/manifest_data`      |
 | `vite_for_wp__development_assets` | `nabasa_vite_plus/development_assets` |
-| `vite_for_wp__production_assets` | `nabasa_vite_plus/production_assets` |
+| `vite_for_wp__production_assets`  | `nabasa_vite_plus/production_assets`  |
 
 Notes:
 
