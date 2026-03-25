@@ -186,6 +186,21 @@ function register_asset( string $manifest_dir, string $entry, array $options = [
         : load_production_asset( $manifest, $entry, $options, $scope );
 }
 
+/**
+ * Load and cache the first available manifest for a directory.
+ *
+ * Prefers the Vite development manifest when present, then falls back to the
+ * production `manifest.json` file.
+ *
+ * @param string $manifest_dir Absolute path to the directory that contains manifest files.
+ * @param string $scope Optional hook scope. Scoped hooks are normalized with `sanitize_key()`.
+ * @return object{
+ *   data: object,
+ *   dir: string,
+ *   is_dev: bool
+ * } Decoded manifest data with directory metadata.
+ * @throws Exception When no readable manifest exists or the manifest cannot be decoded.
+ */
 function get_manifest( string $manifest_dir, string $scope = '' ): object {
     static $manifests = [];
 
@@ -322,6 +337,26 @@ function load_production_asset( object $manifest, string $entry, array $options,
     );
 }
 
+/**
+ * Merge asset registration options with package defaults.
+ *
+ * @param array{
+ *   handle?: string,
+ *   dependencies?: list<string>,
+ *   css_dependencies?: list<string>,
+ *   css_media?: string,
+ *   css_only?: bool,
+ *   in_footer?: bool
+ * } $options Partial asset options.
+ * @return array{
+ *   handle: string,
+ *   dependencies: list<string>,
+ *   css_dependencies: list<string>,
+ *   css_media: string,
+ *   css_only: bool,
+ *   in_footer: bool
+ * } Normalized asset options.
+ */
 function parse_options( array $options ): array {
     return wp_parse_args(
         $options,
@@ -336,6 +371,12 @@ function parse_options( array $options ): array {
     );
 }
 
+/**
+ * Generate a default WordPress handle from a manifest entry.
+ *
+ * @param string $entry Manifest entry key, such as `resources/app.ts`.
+ * @return string Sanitized lowercase handle.
+ */
 function default_asset_handle( string $entry ): string {
     return strtolower(
         trim(
@@ -359,6 +400,13 @@ function register_stylesheets( array &$assets, array $stylesheets, string $url, 
     }
 }
 
+/**
+ * Generate a deterministic stylesheet handle for a built CSS asset.
+ *
+ * @param string $handle Base script or entry handle.
+ * @param string $stylesheet Relative stylesheet path from the manifest.
+ * @return string Stable stylesheet handle.
+ */
 function stylesheet_handle( string $handle, string $stylesheet ): string {
     $normalized_stylesheet = trim( wp_normalize_path( $stylesheet ), '/' );
     $slug = strtolower(
@@ -454,6 +502,15 @@ function set_script_type_attribute( string $target_handle, string $tag, string $
     return $processor->get_updated_html();
 }
 
+/**
+ * Build a public base URL for assets inside a manifest directory.
+ *
+ * The resulting URL is normalized so it works for assets located inside plugin
+ * or theme directories under `wp-content`.
+ *
+ * @param string $dir Absolute path to the manifest directory.
+ * @return string Public base URL for the manifest directory.
+ */
 function prepare_asset_url( string $dir ): string {
     $content_dir = wp_normalize_path( WP_CONTENT_DIR );
     $manifest_dir = wp_normalize_path( $dir );
@@ -531,6 +588,13 @@ function asset_url( string $manifest_dir, string $asset = '' ): string {
     return join_asset_url( $base_url, $asset );
 }
 
+/**
+ * Join a base asset URL with a relative asset path.
+ *
+ * @param string $base_url Base public URL.
+ * @param string $asset Relative asset path.
+ * @return string Combined asset URL.
+ */
 function join_asset_url( string $base_url, string $asset ): string {
     return sprintf( '%s/%s', untrailingslashit( $base_url ), ltrim( $asset, '/' ) );
 }

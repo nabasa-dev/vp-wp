@@ -171,6 +171,34 @@ add_action( 'wp_enqueue_scripts', function (): void {
 
 `register_asset()` and `enqueue_asset()` still exist, but they now live under the `Nabasa\VitePlus` namespace and expect snake_case option keys.
 
+If you were calling lower-level PHP helpers directly, use this mapping:
+
+| `vite-for-wp` | `vp-wp` | Notes |
+| --- | --- | --- |
+| `Kucrut\Vite\get_manifest()` | `Nabasa\VitePlus\get_manifest()` | Same role; adds `$scope` and passes `$is_dev` to filters |
+| `Kucrut\Vite\filter_script_tag()` | `Nabasa\VitePlus\filter_script_tag()` | Same role; duplicate handle filters are skipped |
+| `Kucrut\Vite\set_script_type_attribute()` | `Nabasa\VitePlus\set_script_type_attribute()` | Same role |
+| `Kucrut\Vite\generate_development_asset_src()` | `Nabasa\VitePlus\development_asset_src()` | Renamed; same role |
+| `Kucrut\Vite\register_vite_client_script()` | `Nabasa\VitePlus\register_vite_client_script()` | Same role |
+| `Kucrut\Vite\inject_react_refresh_preamble_script()` | `Nabasa\VitePlus\inject_react_refresh_preamble()` | Renamed; also supports `reactRefresh` |
+| `Kucrut\Vite\load_development_asset()` | `Nabasa\VitePlus\load_development_asset()` | Same role; adds `$scope` and deduplicates dependencies |
+| `Kucrut\Vite\load_production_asset()` | `Nabasa\VitePlus\load_production_asset()` | Same role; adds `$scope` and scoped filters |
+| `Kucrut\Vite\register_stylesheets()` | `Nabasa\VitePlus\register_stylesheets()` | Same role; style handles are hashed and deduplicated |
+| `Kucrut\Vite\parse_options()` | `Nabasa\VitePlus\parse_options()` | Same role; defaults use snake_case keys |
+| `Kucrut\Vite\prepare_asset_url()` | `Nabasa\VitePlus\prepare_asset_url()` | Same role |
+| `Kucrut\Vite\register_asset()` | `Nabasa\VitePlus\register_asset()` | Same role; adds `$scope` and default handle generation |
+| `Kucrut\Vite\enqueue_asset()` | `Nabasa\VitePlus\enqueue_asset()` | Same role; adds `$scope` and default handle generation |
+
+New in `vp-wp`:
+
+- `Nabasa\VitePlus\assets()`
+- `Nabasa\VitePlus\asset_url()`
+- `Nabasa\VitePlus\filter_value()`
+- `Nabasa\VitePlus\normalize_scope()`
+- `Nabasa\VitePlus\default_asset_handle()`
+- `Nabasa\VitePlus\stylesheet_handle()`
+- `Nabasa\VitePlus\join_asset_url()`
+
 ## 5. Optional: adopt the `assets()` helper
 
 `vp-wp` adds an `assets()` helper that binds a manifest directory once and lets you reuse it across hooks:

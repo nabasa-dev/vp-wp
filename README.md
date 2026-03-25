@@ -95,12 +95,44 @@ add_action( 'wp_enqueue_scripts', function () use ( $vite ): void {
 } );
 ```
 
-Core PHP helper functions:
+Exposed PHP runtime API:
 
-- `Nabasa\VitePlus\assets()`
-- `Nabasa\VitePlus\register_asset()`
-- `Nabasa\VitePlus\enqueue_asset()`
-- `Nabasa\VitePlus\asset_url()`
+Supported public API:
+
+- `Nabasa\VitePlus\assets()` creates a reusable `Assets` helper.
+- `Nabasa\VitePlus\register_asset()` registers an entry and extracted CSS.
+- `Nabasa\VitePlus\enqueue_asset()` registers and enqueues an entry.
+- `Nabasa\VitePlus\asset_url()` resolves a public asset URL.
+- `Nabasa\VitePlus\Assets::__construct()` creates the helper directly.
+- `Nabasa\VitePlus\Assets::manifest_dir()` gets the bound manifest directory.
+- `Nabasa\VitePlus\Assets::scope()` gets the normalized scope.
+- `Nabasa\VitePlus\Assets::register()` registers an entry.
+- `Nabasa\VitePlus\Assets::enqueue()` registers and enqueues an entry.
+- `Nabasa\VitePlus\Assets::url()` resolves an asset URL.
+
+Advanced callable helpers:
+
+- `Nabasa\VitePlus\filter_value()` applies shared and scoped filters.
+- `Nabasa\VitePlus\normalize_scope()` sanitizes a hook scope.
+- `Nabasa\VitePlus\get_manifest()` loads and caches manifest data.
+- `Nabasa\VitePlus\parse_options()` merges options with defaults.
+- `Nabasa\VitePlus\default_asset_handle()` generates a default handle.
+- `Nabasa\VitePlus\stylesheet_handle()` generates a deterministic style handle.
+- `Nabasa\VitePlus\prepare_asset_url()` builds a manifest base URL.
+- `Nabasa\VitePlus\join_asset_url()` joins a base URL and asset path.
+
+Internal and compatibility helpers:
+
+- `Nabasa\VitePlus\load_development_asset()`
+- `Nabasa\VitePlus\load_production_asset()`
+- `Nabasa\VitePlus\register_stylesheets()`
+- `Nabasa\VitePlus\register_vite_client_script()`
+- `Nabasa\VitePlus\inject_react_refresh_preamble()`
+- `Nabasa\VitePlus\development_asset_src()`
+- `Nabasa\VitePlus\filter_script_tag()`
+- `Nabasa\VitePlus\set_script_type_attribute()`
+- `Nabasa\VitePlus\should_inject_react_refresh()`
+- `Nabasa\VitePlus\string_ends_with()`
 
 Core PHP filters:
 
